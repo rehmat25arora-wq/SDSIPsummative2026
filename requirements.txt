@@ -1,0 +1,10 @@
+fastapi==0.133.1
+uvicorn[standard]
+pillow
+numpy
+imagehash==4.3.2
+PyWavelets
+python-multipart
+starlette==0.52.1
+pydantic
+anyio

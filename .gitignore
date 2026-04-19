@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+meme_images/
+*.egg-info/
+.DS_Store
