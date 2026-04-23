@@ -47,7 +47,15 @@ class TestFINDHasherOptimised(unittest.TestCase):
     def test_hash_length(self):
         """FINd produces a 256-bit hash -- verify the length."""
         h = self.optimised.fromFile(TEST_IMAGES[0])
-        self.assertEqual(len(h.hash), 256)
+        self.assertEqual(h.hash.size, 256)
+    def test_fromFiles_matches_fromFile(self):
+        """Batch hashing should match individual hashing exactly."""
+        batch = self.optimised.fromFiles(TEST_IMAGES, n_workers=2)
+
+        for path in TEST_IMAGES:
+            with self.subTest(image=path):
+                single = str(self.optimised.fromFile(path))
+                self.assertEqual(batch[path], single)
 
 if __name__ == "__main__":
     unittest.main()
