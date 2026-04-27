@@ -26,32 +26,32 @@ hasher = FINDHasherOptimised()
 h = hasher.fromFile("image.jpg")
 print(h)
 ```
-```
-### Compare two images
 
+### Compare two images
+```
 h1 = hasher.fromFile("image1.jpg")
 h2 = hasher.fromFile("image2.jpg")
 print(h1 - h2)  # Hamming distance
 
 ```
-```
-### Hash multiple images in parallel
 
+### Hash multiple images in parallel
+```
 hashes = hasher.fromFiles(image_paths, n_workers=4)
 ```
-```
+
 ## Running the API
 
 ### With Python
-
+```
 python -m uvicorn api.main:app --host 0.0.0.0 --port 8945
 ```
-```
-### With Docker
 
+### With Docker
+```
 docker build -t find-api -f api/Dockerfile .
 docker run -p 8945:8945 find-api
-
+```
 ### API usage
 
 curl -X POST "http://127.0.0.1:8945/compare" \
@@ -65,14 +65,14 @@ Response:
   "distance": 134
 }
 ```
-```
-## Running tests
 
+## Running tests
+```
 python -m pytest tests/test_find.py -v
 ```
 ```
 ## Repository structure
-
+```
 api/                        # FastAPI server
 tests/                      # Unit tests
 legacy/                     # Original and early optimisation
