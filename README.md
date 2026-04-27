@@ -2,12 +2,17 @@
 
 A Python library for perceptual image hashing using the FINd algorithm, with a RESTful API for comparing images at scale.
 
+---
+
 ## What it does
 
 FINd converts images into 256-bit perceptual hashes. Images that look similar will have hashes with a small Hamming distance. This makes it fast to find near-duplicate images without comparing pixels directly.
 
+---
+
 ## Installation
 
+```bash
 pip install -r requirements.txt
 
 ## Usage
@@ -44,11 +49,15 @@ docker run -p 8945:8945 find-api
 ### API usage
 
 curl -X POST "http://127.0.0.1:8945/compare" \
-  -F "image1=@image1.jpg" \
-  -F "image2=@image2.jpg"
+  -F "image1=@meme_images/0660_23034755.jpg" \
+  -F "image2=@meme_images/0012_12173443.jpg"
 
 Response:
-{"image1_hash": "393b246d...","image2_hash": "18ab6c6f...","distance": 40}
+{
+  "image1_hash": "20f7881c9e863231efca8d383cf4c35fc69cd844b1e13a69be787c9a661d7382",
+  "image2_hash": "9a4e135b6c9e61330e37c49393e31e4e7cd9618c692c92b1c6b438f17963b6ac",
+  "distance": 134
+}
 
 ## Running tests
 
@@ -56,13 +65,16 @@ python -m pytest tests/test_find.py -v
 
 ## Repository structure
 
-FINd.py                 # Original FINd algorithm
-FINd_optimised.py       # Optimised version (numpy + multiprocessing)
-matrix.py               # Matrix utilities
-api/
-    main.py             # FastAPI server
-    Dockerfile          # Docker container
-tests/
-    test_find.py        # Unit tests
-benchmarking.ipynb      # Profiling and accuracy analysis
-requirements.txt        # Dependencies
+api/                        # FastAPI server
+tests/                      # Unit tests
+legacy/                     # Original and early optimisation
+
+FINd_optimised.py           # Optimised version 
+FINd_gpu.py                 # GPU implementation 
+
+benchmark.py                # Benchmark script
+benchmark_gpu.py            # GPU benchmarking
+Benchmarking and Profiling.ipynb  # Profiling and analysis
+
+matrix.py                   # Matrix utilities
+requirements.txt            # Dependencies

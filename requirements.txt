@@ -10,3 +10,5 @@ pydantic
 anyio
 numba
 scikit-learn
+matplotlib
+line_profiler
