@@ -15,11 +15,11 @@ FINd converts images into 256-bit perceptual hashes. Images that look similar wi
 ```bash
 pip install -r requirements.txt
 ```
-```
+
 ## Usage
 
 ### Hash a single image
-
+```
 from FINd_optimised import FINDHasherOptimised
 
 hasher = FINDHasherOptimised()
@@ -53,7 +53,7 @@ docker build -t find-api -f api/Dockerfile .
 docker run -p 8945:8945 find-api
 ```
 ### API usage
-
+```
 curl -X POST "http://127.0.0.1:8945/compare" \
   -F "image1=@meme_images/0660_23034755.jpg" \
   -F "image2=@meme_images/0012_12173443.jpg"
@@ -70,7 +70,7 @@ Response:
 ```
 python -m pytest tests/test_find.py -v
 ```
-```
+
 ## Repository structure
 ```
 api/                        # FastAPI server
@@ -78,7 +78,7 @@ tests/                      # Unit tests
 legacy/                     # Original and early optimisation
 
 FINd_optimised.py           # Optimised version 
-FINd_gpu.py                 # GPU implementation 
+FINd_gpu.py                 # GPU implementation ```
 
 benchmark.py                # Benchmark script
 benchmark_gpu.py            # GPU benchmarking
