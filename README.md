@@ -16,6 +16,8 @@ FINd converts images into 256-bit perceptual hashes. Images that look similar wi
 pip install -r requirements.txt
 ```
 
+---
+
 ## Usage
 
 ### Hash a single image
@@ -41,6 +43,8 @@ print(h1 - h2)  # Hamming distance
 ```python
 hashes = hasher.fromFiles(image_paths, n_workers=4)
 ```
+
+---
 
 ## Running the API
 
@@ -75,23 +79,27 @@ Response:
 }
 ```
 
+---
+
 ## Running tests
 
 ```bash
 python -m pytest tests/test_find.py -v
 ```
 
+---
+
 ## Repository structure
 
 ```
-api/                                  # FastAPI server
-tests/                                # Unit tests
-legacy/                               # Original and early optimisation
-FINd_optimised.py                     # Optimised version
-FINd_gpu.py                           # GPU implementation
-benchmark.py                          # Benchmark script
-benchmark_gpu.py                      # GPU benchmarking
-Benchmarking and Profiling.ipynb      # Profiling and analysis
-matrix.py                             # Matrix utilities
-requirements.txt                      # Dependencies
+api/                              # FastAPI server and Dockerfile
+tests/                            # Unit tests
+FINd.py                           # Original implementation (baseline)
+FINd_v1.py                        # Loop-level optimisation (v1)
+FINd_optimised.py                 # Fully optimised implementation (v2)
+matrix.py                         # Matrix utilities
+benchmark.py                      # Benchmarking script
+Benchmarking and Profiling.ipynb  # Profiling and analysis notebook
+requirements.txt                  # Dependencies
+README.md                         # This file
 ```
