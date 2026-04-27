@@ -14,7 +14,8 @@ FINd converts images into 256-bit perceptual hashes. Images that look similar wi
 
 ```bash
 pip install -r requirements.txt
-
+```
+```
 ## Usage
 
 ### Hash a single image
@@ -24,23 +25,28 @@ from FINd_optimised import FINDHasherOptimised
 hasher = FINDHasherOptimised()
 h = hasher.fromFile("image.jpg")
 print(h)
-
+```
+```
 ### Compare two images
 
 h1 = hasher.fromFile("image1.jpg")
 h2 = hasher.fromFile("image2.jpg")
 print(h1 - h2)  # Hamming distance
 
+```
+```
 ### Hash multiple images in parallel
 
 hashes = hasher.fromFiles(image_paths, n_workers=4)
-
+```
+```
 ## Running the API
 
 ### With Python
 
 python -m uvicorn api.main:app --host 0.0.0.0 --port 8945
-
+```
+```
 ### With Docker
 
 docker build -t find-api -f api/Dockerfile .
@@ -58,11 +64,13 @@ Response:
   "image2_hash": "9a4e135b6c9e61330e37c49393e31e4e7cd9618c692c92b1c6b438f17963b6ac",
   "distance": 134
 }
-
+```
+```
 ## Running tests
 
 python -m pytest tests/test_find.py -v
-
+```
+```
 ## Repository structure
 
 api/                        # FastAPI server
@@ -78,3 +86,4 @@ Benchmarking and Profiling.ipynb  # Profiling and analysis
 
 matrix.py                   # Matrix utilities
 requirements.txt            # Dependencies
+```
